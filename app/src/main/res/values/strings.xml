@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">MultiGame</string>
+    <string name="actionbar_game_name">MultiGame</string>
+    <string name="todo">TODO</string>
+
+    <!-- For Navigation Menu (Left) -->
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Player Game</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    <string name="game1_name">Tictactoe</string>
+    <string name="game2_name">Sudoku</string>
+    <string name="game3_name">Game 2</string>
+    <string name="game4_name">Game 3</string>
+    <string name="game5_name">Game 4</string>
+    <string name="menu_top_players">Top players</string>
+    <string name="menu_setting">Setting</string>
+    <string name="menu_logout">Logout</string>
+
+    <!-- For Function Menu (Right) -->
+    <string name="menu_information">Information</string>
+    <string name="instructions">Instructions</string>
+
+    <!-- For Tictactoe Game -->
+    <string name="title_activity_tictactoe_game">Tictactoe</string>
+    <string name="pick_mark">PICK PLAYER 1\'S MARK</string>
+    <string name="remember">REMEMBER: X GOES FIRST</string>
+    <string name="single_player_button_txt">SINGLE PLAYER( vs BOT)</string>
+    <string name="duo_player_button_txt">MULTIPLE PLAYER</string>
+    <string name="turn">TURN</string>
+    <string name="x_score">\'X\'s SCORE</string>
+    <string name="o_score">\'O\'s SCORE</string>
+    <string name="tie_score">TIES</string>
+    <string name="you_win">YOU WIN!</string>
+    <string name="you_lose">YOU LOSE!</string>
+    <string name="x_win">\'X\' is WIN!</string>
+    <string name="o_win">\'O\' is WIN!</string>
+    <string name="instruction_tictactoe1">1. The game is played on a grid that\'s 3 squares by 3 squares.</string>
+    <string name="instruction_tictactoe2">2. You are X , your friend (or the computer in this case) is O . Players take turns putting their marks in empty squares.</string>
+    <string name="instruction_tictactoe3">3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.</string>
+    <string name="instruction_tictactoe4">4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.</string>
+</resources>

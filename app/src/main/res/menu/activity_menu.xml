@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_menu_game1"
+            android:checkable="false"
+            android:title="@string/game1_name"
+            android:icon="@drawable/icon_tictactoe"/>
+        <item
+            android:id="@+id/nav_menu_game2"
+            android:checkable="false"
+            android:title="@string/game2_name"
+            android:icon="@drawable/icon_sudoku"/>
+        <item
+            android:id="@+id/nav_menu_game3"
+            android:checkable="false"
+            android:title="@string/game3_name" />
+        <item
+            android:id="@+id/nav_menu_game4"
+            android:checkable="false"
+            android:title="@string/game4_name" />
+        <item
+            android:id="@+id/nav_menu_game5"
+            android:checkable="false"
+            android:title="@string/game5_name" />
+    </group>
+
+</menu>

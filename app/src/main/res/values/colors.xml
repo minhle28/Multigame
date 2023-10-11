@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#14A6B3</color>
+    <color name="teal_400">#1295A1</color>
+    <color name="teal_700">#10848F</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#2BDA8E</color>
+    <color name="blue_500">#1c7dff</color>
+    <color name="blue_700">#0051c4</color>
+
+    <!--Color for Tictatoe-->
+    <color name="home_bg">#222A3A</color>
+    <color name="home_card_bg">#353E51</color>
+    <color name="light_white_text">#BCFFFFFF</color>
+    <color name="light_white_text2">#97FFFFFF</color>
+    <color name="o_color">#FFD000</color>
+    <color name="o_color_dark">#5E4D00</color>
+    <color name="x_color">#03A9F4</color>
+    <color name="x_color_dark">#004665</color>
+    <color name="game_button_color_dark">#1C1F27</color>
+    <color name="game_button_color">#353E51</color>
+    <color name="golden">#FFAD00</color>
+    <color name="lose">#C81F1F</color>
+</resources>
