@@ -17,7 +17,8 @@
         <item
             android:id="@+id/nav_menu_game3"
             android:checkable="false"
-            android:title="@string/game3_name" />
+            android:title="@string/game3_name"
+            android:icon="@drawable/icon_memory"/>
         <item
             android:id="@+id/nav_menu_game4"
             android:checkable="false"

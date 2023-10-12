@@ -14,6 +14,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 
 import com.example.multigame.databinding.NavHeaderMainBinding;
+import com.example.multigame.gameBasic.memory.MemoryGameActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.example.multigame.base.BaseActivity;
 import com.example.multigame.databinding.ActivityMainBinding;
@@ -216,8 +217,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
     }
 
     public void onClickGame3() {
-        Intent Game3 = new Intent(this, SudokuGameActivity.class);
-        startActivityWithAnimation(Game3);
+        Intent memoryGame = new Intent(this, MemoryGameActivity.class);
+        startActivityWithAnimation(memoryGame);
     }
 
     public void onClickGame4() {
