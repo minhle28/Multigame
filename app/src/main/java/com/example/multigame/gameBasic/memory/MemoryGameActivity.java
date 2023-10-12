@@ -24,8 +24,7 @@ import com.example.multigame.base.DialogInstruction;
 import com.example.multigame.databinding.ActivityMemoryGameBinding;
 import com.example.multigame.utils.Utils;
 
-public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding>
-        implements AdapterView.OnItemClickListener {
+public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding> implements AdapterView.OnItemClickListener {
 
     private int pointCounter;
     public long totalTime = 181000;
@@ -39,25 +38,9 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding>
 
     // Variable to save point for game
     long mStartTime = 0;
-
     private Chronometer timerChronometer;
     private long elapsedTime;
-
-    private boolean gameCompleted; // Flag to track game completion
-
-    private final Handler timerHandler = new Handler();
-    private final Runnable timerRunnable = new Runnable() {
-        @Override
-        public void run() {
-            long currentMillis = SystemClock.elapsedRealtime();
-            elapsedTime = currentMillis - timerChronometer.getBase();
-            timerHandler.postDelayed(this, 1000); // Update the timer every second
-
-            if (gameCompleted) {
-                timerChronometer.stop(); // Stop the timer when the game is completed
-            }
-        }
-    };
+    private boolean gameCompleted;
 
     @Override
     protected boolean isHaveRightMenu() {
@@ -89,6 +72,20 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding>
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private final Handler timerHandler = new Handler();
+    private final Runnable timerRunnable = new Runnable() {
+        @Override
+        public void run() {
+            long currentMillis = SystemClock.elapsedRealtime();
+            elapsedTime = currentMillis - timerChronometer.getBase();
+            timerHandler.postDelayed(this, 1000); // Update the timer every second
+
+            if (gameCompleted) {
+                timerChronometer.stop();
+            }
+        }
+    };
 
     public void initGame() {
         adapter = new ImageAdapter(this, true);
@@ -180,6 +177,9 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding>
                     else if ((int) activeCards.get(0).getTag() != R.drawable.checkmark && (int) activeCards.get(1).getTag() != R.drawable.checkmark) {
                         pointCounter += 1;
                         if (pointCounter >= 10) {
+                            gameCompleted = true;
+                            timerChronometer.stop(); // Stop the timer
+
                             long time = Utils.millisecondToSecond(System.currentTimeMillis() - mStartTime);
                             //FirebaseHelper.getInstance().getUserDao().updateGamePoint(2, time);
                             mIsWon = true;
@@ -218,6 +218,7 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding>
                 if (which == DialogInterface.BUTTON_NEGATIVE) {
                     onSupportNavigateUp();
                 } else {
+                    gameCompleted = false;
                     initGame();
                 }
             });
@@ -248,8 +249,6 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding>
                 }
             } else {
                 if (pointCounter >= 10) {
-                    gameCompleted = true; // Set the game completion flag
-                    timerChronometer.stop(); // Stop the timer
                     Toast.makeText(this, "You Win!!", Toast.LENGTH_SHORT).show();
                     long time = Utils.millisecondToSecond(System.currentTimeMillis() - mStartTime);
                     //FirebaseHelper.getInstance().getUserDao().updateGamePoint(2, time);
