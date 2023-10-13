@@ -2,8 +2,10 @@ package com.example.multigame.gameBasic.memory;
 
 import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.widget.TextView;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +27,9 @@ import com.example.multigame.databinding.ActivityMemoryGameBinding;
 import com.example.multigame.utils.Utils;
 
 public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding> implements AdapterView.OnItemClickListener {
-
+    private MediaPlayer player;
+    private boolean play_music;
+    private Menu menuList;
     private int pointCounter;
     public long totalTime = 181000;
     private boolean mIsWon;
@@ -63,11 +67,34 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding> 
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menuList = menu;
+        getMenuInflater().inflate(R.menu.menu_tictactoe_game, menu);
+        if (play_music) {
+            menu.findItem(R.id.action_sound).setIcon(R.drawable.ic_volume_off_white_24dp);
+        } else {
+            menu.findItem(R.id.action_sound).setIcon(R.drawable.ic_volume_up_white_24dp);
+        }
+        return isHaveRightMenu();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_information:
                 DialogInstruction dialogInstruction = DialogInstruction.newInstance(R.layout.dialog_instruction_memory);
                 dialogInstruction.show(getSupportFragmentManager(), "instruction");
+                return true;
+            case R.id.action_sound:
+                if (play_music) {
+                    player.pause();
+                    play_music = false;
+                    menuList.findItem(R.id.action_sound).setIcon(R.drawable.ic_volume_up_white_24dp);
+                } else {
+                    player.start();
+                    play_music = true;
+                    menuList.findItem(R.id.action_sound).setIcon(R.drawable.ic_volume_off_white_24dp);
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -110,9 +137,27 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding> 
 
     @Override
     protected void subscribeUi() {
+        player = MediaPlayer.create(this, R.raw.audio_memory_game);
+        player.setLooping(true);
+        play_music = true;
+
         binding.setAction(this);
         initGame();
         binding.gameLayout.setOnItemClickListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        if (play_music)
+            player.pause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (play_music)
+            player.start();
     }
 
     @Override
