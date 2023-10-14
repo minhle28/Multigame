@@ -155,13 +155,18 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
                             }
 
                             if (singleOrDuo.equals("single")) {
-                                isPlayerTurn = false;
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        randomCpu();
-                                    }
-                                }, 1000);
+                                if (markOfPlayer.equals("x") && markedCount == 0 ) {
+                                    choosedMark = markOfPlayer;  // to make sure the mark doesn't change
+                                    isPlayerTurn = true;
+                                } else {
+                                    isPlayerTurn = false;
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            randomCpu();
+                                        }
+                                    }, 1000);
+                                }
                             }
                         } else if (!isPlayerTurn && !boxMarked[row][col]) {
                             Common.showToast("Bot's Turn", context);
@@ -390,6 +395,7 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
         if (singleOrDuo.equals("single") && isFromRandom) {
             if (choosedMark.equals("o")) {
                 xIsYou = false;
+                isPlayerTurn = false;
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -398,6 +404,7 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
                 }, 1000);
             } else {
                 xIsYou = true;
+                isPlayerTurn = true;
             }
         }
     }
