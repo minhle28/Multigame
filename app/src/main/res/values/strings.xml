@@ -39,17 +39,20 @@
     <string name="x_win">\'X\' is WIN!</string>
     <string name="o_win">\'O\' is WIN!</string>
     <!-- Right Menu -->
-    <string name="instruction_tictactoe1">1. The game is played on a grid that\'s 3 squares by 3 squares.</string>
-    <string name="instruction_tictactoe2">2. You are X , your friend (or the computer in this case) is O . Players take turns putting their marks in empty squares.</string>
-    <string name="instruction_tictactoe3">3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.</string>
-    <string name="instruction_tictactoe4">4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.</string>
+    <string name="instruction_tictactoe">
+        1. The game is played on a grid that\'s 3 squares by 3 squares.\n\n
+        2. You are X , your friend (or the computer in this case) is O . Players take turns putting their marks in empty squares.\n\n
+        3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.\n\n
+        4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.\n\n
+        5. For the Multiplayer, X goes first, so not matter player choose X or O.
+    </string>
 
     <!-- Memory Game -->
     <string name="title_activity_memory_game">Memory Game</string>
     <string name="memory_game_new_game">New game</string>
     <!-- Right Menu -->
     <string name="instructions_game_memory">
-        1. Choose Two cards to flip over, if the images are the same you get a point, if not the images flip back over.\n
+        1. Choose Two cards to flip over, if the images are the same you get a point, if not the images flip back over.\n\n
         2. You must correctly choose the correct images within a certain amount of turns.
     </string>
 

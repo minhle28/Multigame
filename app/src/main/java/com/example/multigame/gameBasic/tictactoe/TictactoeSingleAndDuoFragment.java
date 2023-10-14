@@ -406,6 +406,8 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
                 xIsYou = true;
                 isPlayerTurn = true;
             }
+        } else {
+            choosedMark = "x";
         }
     }
 }
