@@ -99,16 +99,6 @@
                             </com.google.android.material.card.MaterialCardView>
                         </RelativeLayout>
                     </com.google.android.material.card.MaterialCardView>
-                    <TextView
-                        android:id="@+id/remember"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/remember"
-                        android:layout_centerHorizontal="true"
-                        android:textSize="10dp"
-                        android:layout_below="@id/pick_card"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/light_white_text2"/>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
