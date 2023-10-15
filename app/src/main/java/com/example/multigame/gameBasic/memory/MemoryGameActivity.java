@@ -264,6 +264,7 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding> 
                     onSupportNavigateUp();
                 } else {
                     gameCompleted = false;
+                    mStartTime = 0;
                     initGame();
                 }
             });
