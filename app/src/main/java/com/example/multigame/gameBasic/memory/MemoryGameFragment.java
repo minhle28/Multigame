@@ -216,7 +216,7 @@ public class MemoryGameFragment extends BaseFragment<MemoryGameFragmentBinding> 
             binding.shuffleButton.setVisibility(View.INVISIBLE);
             Utils.showConfirmDialog(requireContext(), "New game", "Do you want to start a new game?", R.drawable.newgame, (dialog, which) -> {
                 if (which == DialogInterface.BUTTON_NEGATIVE) {
-                    //onSupportNavigateUp();
+                    ((MemoryGameActivity)getContext()).onSupportNavigateUp();
                 } else {
                     gameCompleted = false;
                     mStartTime = 0;
