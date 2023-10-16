@@ -25,6 +25,7 @@
         <activity android:name="com.example.multigame.gameBasic.tictactoe.TictactoeSingleAndDuoFragment" />
         <activity android:name="com.example.multigame.gameBasic.sudoku.SudokuGameActivity" />
         <activity android:name="com.example.multigame.gameBasic.memory.MemoryGameActivity" />
+
         <service
             android:name="com.example.multigame.service.BackgroundSoundService"
             android:enabled="true" />

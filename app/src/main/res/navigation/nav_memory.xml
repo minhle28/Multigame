@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_memory"
+    app:startDestination="@id/memoryGameMenu">
+
+    <fragment
+        android:id="@+id/memoryGameMenu"
+        android:name="com.example.multigame.gameBasic.memory.MemoryGameMenu"
+        android:label="MemoryGameMenu" >
+        <action
+            android:id="@+id/action_memoryGameMenu_to_memoryGameFragment"
+            app:destination="@id/memoryGameFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_right_exit"
+            app:popUpTo="@id/memoryGameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/memoryGameFragment"
+        android:name="com.example.multigame.gameBasic.memory.MemoryGameFragment"
+        android:label="MemoryGameFragment">
+    </fragment>
+
+</navigation>

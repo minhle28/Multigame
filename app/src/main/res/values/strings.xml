@@ -50,6 +50,7 @@
     <!-- Memory Game -->
     <string name="title_activity_memory_game">Memory Game</string>
     <string name="memory_game_new_game">New game</string>
+    <string name="memory_game_play">Play</string>
     <!-- Right Menu -->
     <string name="instructions_game_memory">
         1. Choose Two cards to flip over, if the images are the same you get a point, if not the images flip back over.\n\n
