@@ -50,11 +50,14 @@
     <!-- Memory Game -->
     <string name="title_activity_memory_game">Memory Game</string>
     <string name="memory_game_new_game">New game</string>
-    <string name="memory_game_play">Play</string>
+    <string name="memory_game_welcome_text">Welcome to Memory Game!</string>
+    <string name="memory_game_play">Play Game</string>
     <!-- Right Menu -->
     <string name="instructions_game_memory">
-        1. Choose Two cards to flip over, if the images are the same you get a point, if not the images flip back over.\n\n
-        2. You must correctly choose the correct images within a certain amount of turns.
+        1. Choose Two cards to flip over, if the images are the same check it as correct. \n\n
+        2. If the images are not the same, they will flip back over.\n\n
+        3. You must correctly choose the correct images within a certain amount of turns.\n\n
+        4. The timer will record how fast the player has been played.
     </string>
 
     <!-- Alert -->

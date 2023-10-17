@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/memoryGameMenu"
         android:name="com.example.multigame.gameBasic.memory.MemoryGameMenu"
-        android:label="MemoryGameMenu" >
+        android:label="MemoryGameMenu">
         <action
             android:id="@+id/action_memoryGameMenu_to_memoryGameFragment"
             app:destination="@id/memoryGameFragment"
@@ -21,7 +21,6 @@
     <fragment
         android:id="@+id/memoryGameFragment"
         android:name="com.example.multigame.gameBasic.memory.MemoryGameFragment"
-        android:label="MemoryGameFragment">
-    </fragment>
+        android:label="MemoryGameFragment"></fragment>
 
 </navigation>

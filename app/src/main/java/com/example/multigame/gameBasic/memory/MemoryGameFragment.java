@@ -15,6 +15,7 @@ import android.widget.Toast;
 import android.widget.Chronometer;
 import android.os.SystemClock;
 import android.os.Looper;
+
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -216,7 +217,7 @@ public class MemoryGameFragment extends BaseFragment<MemoryGameFragmentBinding> 
             binding.shuffleButton.setVisibility(View.INVISIBLE);
             Utils.showConfirmDialog(requireContext(), "New game", "Do you want to start a new game?", R.drawable.newgame, (dialog, which) -> {
                 if (which == DialogInterface.BUTTON_NEGATIVE) {
-                    ((MemoryGameActivity)getContext()).onSupportNavigateUp();
+                    ((MemoryGameActivity) getContext()).onSupportNavigateUp();
                 } else {
                     gameCompleted = false;
                     mStartTime = 0;

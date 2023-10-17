@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -18,7 +19,6 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding> 
     private MediaPlayer player;
     private boolean play_music;
     private Menu menuList;
-
 
     @Override
     protected boolean isHaveRightMenu() {
@@ -74,7 +74,6 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding> 
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     protected void subscribeUi() {
         player = MediaPlayer.create(this, R.raw.audio_memory_game);
@@ -109,14 +108,14 @@ public class MemoryGameActivity extends BaseActivity<ActivityMemoryGameBinding> 
 
     @Override
     public boolean onSupportNavigateUp() {
-        if(isHaveBackMenu()) {
+        if (isHaveBackMenu()) {
             NavDestination currentDestination = Navigation.findNavController(this, R.id.nav_host_fragment).getCurrentDestination();
             String className = ((FragmentNavigator.Destination) currentDestination).getClassName();
-            if(className.equals(MemoryGameMenu.class.getName())) {
+            if (className.equals(MemoryGameMenu.class.getName())) {
                 finish();
                 overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_right_exit);
-            }else {
-                Navigation.findNavController(this,R.id.nav_host_fragment).popBackStack();
+            } else {
+                Navigation.findNavController(this, R.id.nav_host_fragment).popBackStack();
             }
         }
         return true;

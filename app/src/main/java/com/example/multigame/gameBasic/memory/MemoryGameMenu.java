@@ -35,7 +35,6 @@ public class MemoryGameMenu extends BaseFragment<MemoryGameMenuBinding> {
         findNavController(this).navigate(R.id.action_memoryGameMenu_to_memoryGameFragment);
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
