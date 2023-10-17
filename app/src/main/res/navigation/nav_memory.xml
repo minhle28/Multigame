@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_memory"
-    app:startDestination="@id/memoryGameMenu">
+    app:startDestination="@id/tictactoeMenuFragment">
 
     <fragment
-        android:id="@+id/memoryGameMenu"
+        android:id="@+id/tictactoeMenuFragment"
         android:name="com.example.multigame.gameBasic.memory.MemoryGameMenu"
         android:label="MemoryGameMenu">
         <action

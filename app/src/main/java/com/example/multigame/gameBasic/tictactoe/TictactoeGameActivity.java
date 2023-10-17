@@ -14,7 +14,10 @@ import android.view.Window;
 import android.view.Menu;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.FragmentNavigator;
+
 import com.example.multigame.base.DialogInstruction;
 
 import com.example.multigame.gameBasic.tictactoe.controller.Common;
@@ -26,16 +29,14 @@ public class TictactoeGameActivity extends BaseActivity<ActivityTictactoeGameBin
     private MediaPlayer player;
     private boolean play_music;
     private Menu menuList;
-    private MaterialCardView clickX, clickO, singlePlayerButton, duoPlayerButton;
-    private String playerChoose;
-    private Context context;
+
     @Override
-    protected boolean isHaveBackMenu() {
+    protected boolean isHaveRightMenu() {
         return true;
     }
 
     @Override
-    protected boolean isHaveRightMenu() {
+    protected boolean isHaveBackMenu() {
         return true;
     }
 
@@ -47,13 +48,6 @@ public class TictactoeGameActivity extends BaseActivity<ActivityTictactoeGameBin
     @Override
     protected String getActionBarTitle() {
         return getString(R.string.title_activity_tictactoe_game);
-    }
-
-    @Override
-    protected void subscribeUi() {
-        player = MediaPlayer.create(this, R.raw.audio_tictactoe_game);
-        player.setLooping(true);
-        play_music = true;
     }
 
     @Override
@@ -72,7 +66,8 @@ public class TictactoeGameActivity extends BaseActivity<ActivityTictactoeGameBin
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_information:
-                DialogInstruction.newInstance(R.layout.dialog_instruction_tictactoe).show(getSupportFragmentManager(),"tictactoe_instruction");
+                DialogInstruction dialogInstruction = DialogInstruction.newInstance(R.layout.dialog_instruction_tictactoe);
+                dialogInstruction.show(getSupportFragmentManager(), "instruction");
                 return true;
             case R.id.action_sound:
                 if (play_music) {
@@ -90,6 +85,19 @@ public class TictactoeGameActivity extends BaseActivity<ActivityTictactoeGameBin
     }
 
     @Override
+    protected void subscribeUi() {
+        player = MediaPlayer.create(this, R.raw.audio_tictactoe_game);
+        player.setLooping(true);
+        play_music = true;
+
+        //binding.setAction(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+    }
+
+    @Override
     protected void onPause() {
         if (play_music)
             player.pause();
@@ -103,58 +111,23 @@ public class TictactoeGameActivity extends BaseActivity<ActivityTictactoeGameBin
             player.start();
     }
 
-    //Functions for game
-    private void init() {
-        clickX = findViewById(R.id.click_x);
-        clickO = findViewById(R.id.click_o);
-        singlePlayerButton = findViewById(R.id.single_player_button);
-        duoPlayerButton = findViewById(R.id.duo_player_button);
-        context = this;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tictactoe_game);
-        init();
+    }
 
-        Window window = getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(context, R.color.home_bg));
-
-        View.OnClickListener clickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view == clickX) {
-                    playerChoose = "x";
-                    clickX.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.light_white_text)));
-                    clickO.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.home_bg)));
-                } else if (view == clickO) {
-                    playerChoose = "o";
-                    clickO.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.light_white_text)));
-                    clickX.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.home_bg)));
-                }
+    @Override
+    public boolean onSupportNavigateUp() {
+        if (isHaveBackMenu()) {
+            NavDestination currentDestination = Navigation.findNavController(this, R.id.nav_host_fragment).getCurrentDestination();
+            String className = ((FragmentNavigator.Destination) currentDestination).getClassName();
+            if (className.equals(TictactoeMenuFragment.class.getName())) {
+                finish();
+                overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_right_exit);
+            } else {
+                Navigation.findNavController(this, R.id.nav_host_fragment).popBackStack();
             }
-        };
-
-        clickX.setOnClickListener(clickListener);
-        clickO.setOnClickListener(clickListener);
-
-        View.OnClickListener playerButtonClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (playerChoose == null || playerChoose.equals("")) {
-                    Common.showToast("Please choose 'X' OR 'O'", context);
-                } else {
-                    Intent intent = new Intent(TictactoeGameActivity.this, TictactoeSingleAndDuoFragment.class);
-                    String singleOrDuo = (view == singlePlayerButton) ? "single" : "duo";
-                    intent.putExtra("SingleOrDuo", singleOrDuo);
-                    intent.putExtra("playerChoose", playerChoose);
-                    startActivity(intent);
-                }
-            }
-        };
-
-        singlePlayerButton.setOnClickListener(playerButtonClickListener);
-        duoPlayerButton.setOnClickListener(playerButtonClickListener);
+        }
+        return true;
     }
 }

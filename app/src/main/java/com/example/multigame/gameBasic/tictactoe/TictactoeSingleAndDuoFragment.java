@@ -14,14 +14,16 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.multigame.R;
+import com.example.multigame.base.BaseFragment;
 import com.example.multigame.base.DialogInstruction;
 import com.example.multigame.gameBasic.tictactoe.controller.Common;
 import com.google.android.material.card.MaterialCardView;
 import java.util.Random;
-import com.example.multigame.base.BaseActivity;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import com.example.multigame.databinding.TictactoeSingleAndDuoFragmentBinding;
 
-public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleAndDuoFragmentBinding> {
+public class TictactoeSingleAndDuoFragment extends BaseFragment<TictactoeSingleAndDuoFragmentBinding> {
     private MediaPlayer player;
     private boolean play_music;
     private Menu menuList;
@@ -39,17 +41,6 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
     private boolean xIsYou;
     private boolean isPlayerTurn = true;
 
-
-    @Override
-    protected boolean isHaveBackMenu() {
-        return true;
-    }
-
-    @Override
-    protected boolean isHaveRightMenu() {
-        return true;
-    }
-
     @Override
     protected int getLayoutID() {
         return R.layout.activity_tictactoe_game;
@@ -61,22 +52,10 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.menuList = menu;
-        getMenuInflater().inflate(R.menu.menu_tictactoe_game, menu);
-        if (play_music) {
-            menu.findItem(R.id.action_sound).setIcon(R.drawable.ic_volume_off_white_24dp);
-        } else {
-            menu.findItem(R.id.action_sound).setIcon(R.drawable.ic_volume_up_white_24dp);
-        }
-        return isHaveRightMenu();
-    }
-
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_information:
-                DialogInstruction.newInstance(R.layout.dialog_instruction_tictactoe).show(getSupportFragmentManager(),"tictactoe_instruction");
+                DialogInstruction.newInstance(R.layout.dialog_instruction_tictactoe).show(getChildFragmentManager(),"tictactoe_instruction");
                 return true;
             case R.id.action_sound:
                 if (play_music) {
@@ -95,35 +74,31 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
 
     @Override
     protected void subscribeUi() {
-        player = MediaPlayer.create(this, R.raw.audio_tictactoe_game);
+        player = MediaPlayer.create(requireContext(), R.raw.audio_tictactoe_game);
         player.setLooping(true);
         play_music = true;
     }
 
-    @Override
-    protected void onPause() {
-        if (play_music)
-            player.pause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (play_music)
-            player.start();
-    }
-
     //Functions for game
-    private void init() {
-        context = TictactoeSingleAndDuoFragment.this;
-        xScoreTv = findViewById(R.id.x_score);
-        oScoreTv = findViewById(R.id.o_score);
-        tiesTv = findViewById(R.id.tie_score);
-        turnImage = findViewById(R.id.turn_img);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout using the correct binding class
+        binding = TictactoeSingleAndDuoFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
 
-        singleOrDuo = getIntent().getStringExtra("SingleOrDuo");
-        choosedMark = getIntent().getStringExtra("playerChoose");
+    private void init() {
+        context = requireContext();
+        xScoreTv = binding.xScore;
+        oScoreTv = binding.oScore;
+        tiesTv = binding.tieScore;
+        turnImage = binding.turnImg;
+
+        Bundle args = getArguments();
+        if (args != null) {
+            singleOrDuo = args.getString("SingleOrDuo");
+            choosedMark = args.getString("playerChoose");
+        }
 
         // Store oringinal mark of player
         markOfPlayer = choosedMark;
@@ -131,9 +106,9 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 String boxId = "box" + (i * 3 + j + 1);
-                int resId = getResources().getIdentifier(boxId, "id", getPackageName());
-                boxes[i][j] = findViewById(resId);
-                boxImages[i][j] = findViewById(getResources().getIdentifier(boxId + "_img", "id", getPackageName()));
+                int resId = getResources().getIdentifier(boxId, "id", requireContext().getPackageName());
+                boxes[i][j] = getView().findViewById(resId);
+                boxImages[i][j] = getView().findViewById(getResources().getIdentifier(boxId + "_img", "id", requireContext().getPackageName()));
             }
         }
 
@@ -195,15 +170,13 @@ public class TictactoeSingleAndDuoFragment extends BaseActivity<TictactoeSingleA
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.tictactoe_single_and_duo_fragment);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Initialize views and set up the game here
         init();
 
-        Window window = getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(context, R.color.home_bg));
-
-        findViewById(R.id.reset_game).setOnClickListener(new View.OnClickListener() {
+        getView().findViewById(R.id.reset_game).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resetGame(false);

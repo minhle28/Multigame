@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_tictactoe"
+    app:startDestination="@id/tictactoeMenuFragment">
+
+    <fragment
+        android:id="@+id/tictactoeMenuFragment"
+        android:name="com.example.multigame.gameBasic.tictactoe.TictactoeMenuFragment"
+        android:label="TictactoeMenuFragment">
+        <action
+            android:id="@+id/action_tictactoeMenuFragment_to_tictactoeSingleAndDuoFragment"
+            app:destination="@id/tictactoeSingleAndDuoFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_right_exit"
+            app:popUpTo="@id/tictactoeSingleAndDuoFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/tictactoeSingleAndDuoFragment"
+        android:name="com.example.multigame.gameBasic.tictactoe.TictactoeSingleAndDuoFragment"
+        android:label="TictactoeSingleAndDuoFragment"></fragment>
+
+</navigation>

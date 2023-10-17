@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.multigame.gameBasic.tictactoe.TictactoeGameActivity" />
-        <activity android:name="com.example.multigame.gameBasic.tictactoe.TictactoeSingleAndDuoFragment" />
         <activity android:name="com.example.multigame.gameBasic.sudoku.SudokuGameActivity" />
         <activity android:name="com.example.multigame.gameBasic.memory.MemoryGameActivity" />
 
