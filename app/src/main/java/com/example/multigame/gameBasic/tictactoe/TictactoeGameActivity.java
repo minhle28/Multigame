@@ -81,8 +81,6 @@ public class TictactoeGameActivity extends BaseActivity<ActivityTictactoeGameBin
         player = MediaPlayer.create(this, R.raw.audio_tictactoe_game);
         player.setLooping(true);
         play_music = true;
-
-        //binding.setAction(this);
     }
 
     @Override

@@ -86,7 +86,6 @@ public class TictactoeSingleAndDuoFragment extends BaseFragment<TictactoeSingleA
     //Functions for game
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout using the correct binding class
         binding = TictactoeSingleAndDuoFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -124,6 +123,9 @@ public class TictactoeSingleAndDuoFragment extends BaseFragment<TictactoeSingleA
                     @Override
                     public void onClick(View view) {
                         if (isPlayerTurn && !boxMarked[row][col]) {
+                            if (singleOrDuo.equals("duo") && markedCount == 0) {
+                                choosedMark = "x";  //in Duo, no matter player choose the mark, set X always goes first
+                            }
                             boxImages[row][col].setVisibility(View.VISIBLE);
                             boxMarked[row][col] = true;
                             markedOption(row, col);
@@ -176,8 +178,6 @@ public class TictactoeSingleAndDuoFragment extends BaseFragment<TictactoeSingleA
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        // Initialize views and set up the game here
         init();
 
         getView().findViewById(R.id.reset_game).setOnClickListener(new View.OnClickListener() {
@@ -384,6 +384,7 @@ public class TictactoeSingleAndDuoFragment extends BaseFragment<TictactoeSingleA
                 isPlayerTurn = true;
             }
         } else {
+            // When reset or refresh the game, make sure X always goes first
             choosedMark = "x";
         }
     }

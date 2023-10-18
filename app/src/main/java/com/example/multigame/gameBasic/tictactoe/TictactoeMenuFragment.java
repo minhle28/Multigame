@@ -55,7 +55,6 @@ public class TictactoeMenuFragment extends BaseFragment<TictactoeMenuFragmentBin
 
     }
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
