@@ -195,7 +195,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
     @Override
     protected void onResume() {
         super.onResume();
-        if(play_music) {
+        if (play_music) {
             startService(intentMusicBg);
         }
     }

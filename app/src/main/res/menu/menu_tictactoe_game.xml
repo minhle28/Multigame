@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".gameBasic.tictactoe.TictactoeGameActivity">
 
-    <item android:id="@+id/action_sound" android:icon="@drawable/ic_volume_off_white_24dp"
-        android:orderInCategory="1" app:showAsAction="ifRoom"
-        android:title="@string/todo" />
+    <item
+        android:id="@+id/action_sound"
+        android:icon="@drawable/ic_volume_off_white_24dp"
+        android:orderInCategory="1"
+        android:title="@string/todo"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_information"
         android:orderInCategory="100"

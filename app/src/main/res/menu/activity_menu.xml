@@ -7,18 +7,18 @@
         <item
             android:id="@+id/nav_menu_game1"
             android:checkable="false"
-            android:title="@string/game1_name"
-            android:icon="@drawable/icon_tictactoe"/>
+            android:icon="@drawable/icon_tictactoe"
+            android:title="@string/game1_name" />
         <item
             android:id="@+id/nav_menu_game2"
             android:checkable="false"
-            android:title="@string/game2_name"
-            android:icon="@drawable/icon_sudoku"/>
+            android:icon="@drawable/icon_sudoku"
+            android:title="@string/game2_name" />
         <item
             android:id="@+id/nav_menu_game3"
             android:checkable="false"
-            android:title="@string/game3_name"
-            android:icon="@drawable/icon_memory"/>
+            android:icon="@drawable/icon_memory"
+            android:title="@string/game3_name" />
         <item
             android:id="@+id/nav_menu_game4"
             android:checkable="false"

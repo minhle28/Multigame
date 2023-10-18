@@ -1,8 +1,8 @@
 package com.example.multigame.gameBasic.tictactoe;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -13,14 +13,18 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.multigame.R;
 import com.example.multigame.base.BaseFragment;
 import com.example.multigame.base.DialogInstruction;
 import com.example.multigame.gameBasic.tictactoe.controller.Common;
 import com.google.android.material.card.MaterialCardView;
+
 import java.util.Random;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import com.example.multigame.databinding.TictactoeSingleAndDuoFragmentBinding;
 
 public class TictactoeSingleAndDuoFragment extends BaseFragment<TictactoeSingleAndDuoFragmentBinding> {
@@ -55,7 +59,7 @@ public class TictactoeSingleAndDuoFragment extends BaseFragment<TictactoeSingleA
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_information:
-                DialogInstruction.newInstance(R.layout.dialog_instruction_tictactoe).show(getChildFragmentManager(),"tictactoe_instruction");
+                DialogInstruction.newInstance(R.layout.dialog_instruction_tictactoe).show(getChildFragmentManager(), "tictactoe_instruction");
                 return true;
             case R.id.action_sound:
                 if (play_music) {
@@ -130,7 +134,7 @@ public class TictactoeSingleAndDuoFragment extends BaseFragment<TictactoeSingleA
                             }
 
                             if (singleOrDuo.equals("single")) {
-                                if (markOfPlayer.equals("x") && markedCount == 0 ) {
+                                if (markOfPlayer.equals("x") && markedCount == 0) {
                                     choosedMark = markOfPlayer;  // to make sure the mark doesn't change
                                     isPlayerTurn = true;
                                 } else {

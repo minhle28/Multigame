@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.multigame.R;
+
 public class Common {
     public static void showToast(String msg, Context context) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();

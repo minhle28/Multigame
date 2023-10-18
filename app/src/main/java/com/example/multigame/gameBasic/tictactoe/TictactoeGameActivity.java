@@ -1,27 +1,19 @@
 package com.example.multigame.gameBasic.tictactoe;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
 import com.example.multigame.R;
+
 import android.media.MediaPlayer;
-import androidx.core.content.ContextCompat;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.view.View;
-import android.view.Window;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.FragmentNavigator;
 
 import com.example.multigame.base.DialogInstruction;
-
-import com.example.multigame.gameBasic.tictactoe.controller.Common;
-import com.google.android.material.card.MaterialCardView;
 import com.example.multigame.base.BaseActivity;
 import com.example.multigame.databinding.ActivityTictactoeGameBinding;
 

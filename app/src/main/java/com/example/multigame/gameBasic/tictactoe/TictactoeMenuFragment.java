@@ -95,15 +95,12 @@ public class TictactoeMenuFragment extends BaseFragment<TictactoeMenuFragmentBin
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // Initialize views here
+
         clickX = view.findViewById(R.id.click_x);
         clickO = view.findViewById(R.id.click_o);
         singlePlayerButton = view.findViewById(R.id.single_player_button);
         duoPlayerButton = view.findViewById(R.id.duo_player_button);
         context = requireContext();
-
-        //Window window = getWindow();
-        //window.setStatusBarColor(ContextCompat.getColor(context, R.color.home_bg));
 
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
@@ -129,7 +126,6 @@ public class TictactoeMenuFragment extends BaseFragment<TictactoeMenuFragmentBin
                 if (playerChoose == null || playerChoose.equals("")) {
                     Common.showToast("Please choose 'X' OR 'O'", context);
                 } else {
-                    // Navigate to TictactoeSingleAndDuoFragment
                     Bundle args = new Bundle();
                     args.putString("SingleOrDuo", "single");
                     args.putString("playerChoose", playerChoose);
@@ -145,7 +141,6 @@ public class TictactoeMenuFragment extends BaseFragment<TictactoeMenuFragmentBin
                 if (playerChoose == null || playerChoose.equals("")) {
                     Common.showToast("Please choose 'X' OR 'O'", context);
                 } else {
-                    // Navigate to TictactoeSingleAndDuoFragment with "duo" mode
                     Bundle args = new Bundle();
                     args.putString("SingleOrDuo", "duo");
                     args.putString("playerChoose", playerChoose);
@@ -154,9 +149,5 @@ public class TictactoeMenuFragment extends BaseFragment<TictactoeMenuFragmentBin
                 }
             }
         });
-
-
-        //singlePlayerButton.setOnClickListener(playerButtonClickListener);
-        //duoPlayerButton.setOnClickListener(playerButtonClickListener);
     }
 }
