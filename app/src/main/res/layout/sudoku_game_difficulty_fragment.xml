@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="action"
+            type="com.example.multigame.gameBasic.sudoku.SudokuGameDifficultyFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".gameBasic.sudoku.SudokuGameActivity"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <RadioGroup
+            android:id="@+id/groupDifficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.375">
+
+            <RadioButton
+                android:id="@+id/radioButtonEasy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:onClick="@{(view) -> action.onDifficultyRadioButtonsClicked(view)}"
+                android:text="@string/sudoku_game_difficulty_easy" />
+
+            <RadioButton
+                android:id="@+id/radioButtonNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> action.onDifficultyRadioButtonsClicked(view)}"
+                android:text="@string/sudoku_game_difficulty_normal" />
+
+            <RadioButton
+                android:id="@+id/radioButtonHard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> action.onDifficultyRadioButtonsClicked(view)}"
+                android:text="@string/sudoku_game_difficulty_hard" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sudoku_game_start_game"
+            android:onClick="@{(view) -> action.onStartGameButtonClicked(view)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/groupDifficulty"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

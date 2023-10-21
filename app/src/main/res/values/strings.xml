@@ -65,6 +65,10 @@
 
     <!-- Sudoku Game -->
     <string name="sudoku_game_title">Sudoku game</string>
+    <string name="sudoku_game_difficulty_easy">Easy</string>
+    <string name="sudoku_game_difficulty_normal">Normal</string>
+    <string name="sudoku_game_difficulty_hard">Hard</string>
+    <string name="sudoku_game_start_game">Start Game</string>
     <!-- Right Menu -->
     <string name="instructions_game_sudoku">
         1. In Sudoku it is intended to place all the remaining pieces on the board. The numbers range from 1 to 9 (in 9x9 Sudoku).\n\n

@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Multigame"
         tools:targetApi="31">
         <activity
+            android:name=".SudokuGameDifficultyFragment"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Multigame.NoActionBar">
@@ -22,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.multigame.gameBasic.tictactoe.TictactoeGameActivity" />
-        <activity android:name="com.example.multigame.gameBasic.sudoku.SudokuGameActivity" />
+        <activity android:name=".SudokuGameActivity" />
         <activity android:name="com.example.multigame.gameBasic.memory.MemoryGameActivity" />
 
         <service

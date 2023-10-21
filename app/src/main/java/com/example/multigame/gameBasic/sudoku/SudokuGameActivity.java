@@ -75,5 +75,18 @@ public class SudokuGameActivity extends BaseActivity<ActivitySudokuGameBinding> 
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        if(isHaveBackMenu()) {
+            NavDestination currentDestination = Navigation.findNavController(this, R.id.nav_host_fragment).getCurrentDestination();
+            String className = ((FragmentNavigator.Destination) currentDestination).getClassName();
+            if(className.equals(SudokuGameDifficultyFragment.class.getName())) {
+                finish();
+                overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_right_exit);
+            }else {
+                Navigation.findNavController(this,R.id.nav_host_fragment).popBackStack();
+            }
+        }
+        return true;
+    }
 }
