@@ -1,9 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".gameBasic.sudoku.SudokuGamePlayFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="action"
+            type="com.example.multigame.gameBasic.sudoku.SudokuGamePlayFragment" />
+    </data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.091">
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    android:id="@+id/cellGroupFragment"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="0" />
+
+                <fragment
+                    android:id="@+id/cellGroupFragment2"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="1" />
+
+                <fragment
+                    android:id="@+id/cellGroupFragment3"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="2" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    android:id="@+id/cellGroupFragment4"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="3" />
+
+                <fragment
+                    android:id="@+id/cellGroupFragment5"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="4" />
+
+                <fragment
+                    android:id="@+id/cellGroupFragment6"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="5" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="117dp">
+
+                <fragment
+                    android:id="@+id/cellGroupFragment7"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="6" />
+
+                <fragment
+                    android:id="@+id/cellGroupFragment8"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="7" />
+
+                <fragment
+                    android:id="@+id/cellGroupFragment9"
+                    android:name="com.example.multigame.gameBasic.sudoku.CellGroupFragment"
+                    android:layout_width="92dp"
+                    android:layout_height="106dp"
+                    android:layout_weight="1"
+                    android:tag="8" />
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/buttonCheckBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_20_dp"
+            android:onClick="@{()->action.onCheckBoardButtonClicked()}"
+            android:text="@string/sudoku_game_check_board"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
