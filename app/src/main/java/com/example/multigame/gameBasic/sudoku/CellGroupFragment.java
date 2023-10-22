@@ -37,10 +37,8 @@ public class CellGroupFragment extends Fragment {
         for (int textView1 : textViews) {
             TextView textView = view.findViewById(textView1);
             textView.setOnClickListener(view -> {
-                if(getParentFragment() instanceof SudokuGamePlayFragment){
-                    ((SudokuGamePlayFragment)getParentFragment()).onFragmentInteraction(groupId, Integer.parseInt(view.getTag().toString()), view);
-                }else{
-                    //((SudokuNewGameFragment)getParentFragment()).onFragmentInteraction(groupId, Integer.parseInt(view.getTag().toString()), view);
+                if (getParentFragment() instanceof SudokuGamePlayFragment) {
+                    ((SudokuGamePlayFragment) getParentFragment()).onFragmentInteraction(groupId, Integer.parseInt(view.getTag().toString()), view);
                 }
             });
         }

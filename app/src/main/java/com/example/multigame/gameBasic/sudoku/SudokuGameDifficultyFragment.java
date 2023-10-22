@@ -63,7 +63,7 @@ public class SudokuGameDifficultyFragment extends BaseFragment<SudokuGameDifficu
         } else {
             Bundle bundle = new Bundle();
             bundle.putInt("difficulty", selectedDifficulty);
-            findNavController(this).navigate(R.id.action_sudokuGameDifficultyFragment_to_sudokuGamePlayFragment,bundle);
+            findNavController(this).navigate(R.id.action_sudokuGameDifficultyFragment_to_sudokuGamePlayFragment, bundle);
         }
     }
 

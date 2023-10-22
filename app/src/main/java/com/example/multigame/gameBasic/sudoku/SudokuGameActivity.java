@@ -65,7 +65,7 @@ public class SudokuGameActivity extends BaseActivity<ActivitySudokuGameBinding> 
         switch (item.getItemId()) {
             case R.id.menu_information:
                 DialogInstruction dialogInstruction = DialogInstruction.newInstance(R.layout.dialog_instruction_sudoku);
-                dialogInstruction.show(getSupportFragmentManager(),"instruction");
+                dialogInstruction.show(getSupportFragmentManager(), "instruction");
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -73,14 +73,14 @@ public class SudokuGameActivity extends BaseActivity<ActivitySudokuGameBinding> 
 
     @Override
     public boolean onSupportNavigateUp() {
-        if(isHaveBackMenu()) {
+        if (isHaveBackMenu()) {
             NavDestination currentDestination = Navigation.findNavController(this, R.id.nav_host_fragment).getCurrentDestination();
             String className = ((FragmentNavigator.Destination) currentDestination).getClassName();
-            if(className.equals(SudokuGameDifficultyFragment.class.getName())) {
+            if (className.equals(SudokuGameDifficultyFragment.class.getName())) {
                 finish();
                 overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_right_exit);
-            }else {
-                Navigation.findNavController(this,R.id.nav_host_fragment).popBackStack();
+            } else {
+                Navigation.findNavController(this, R.id.nav_host_fragment).popBackStack();
             }
         }
         return true;

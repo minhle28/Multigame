@@ -28,7 +28,7 @@ public class ChooseNumberDialogFragment extends DialogFragment {
     private boolean checkBoxChecked = false;
     private boolean newBoardCreating;
 
-    public static ChooseNumberDialogFragment newInstance(int selectedNumber,  boolean isNewBoard) {
+    public static ChooseNumberDialogFragment newInstance(int selectedNumber, boolean isNewBoard) {
         Bundle args = new Bundle();
         args.putInt(TAG_SELECTED_NUMBER, selectedNumber);
         args.putBoolean(TAG_NEW_BOARD, isNewBoard);
@@ -37,7 +37,7 @@ public class ChooseNumberDialogFragment extends DialogFragment {
         return fragment;
     }
 
-    public void setCallback(Callback callback){
+    public void setCallback(Callback callback) {
         mCallback = callback;
     }
 
@@ -69,8 +69,8 @@ public class ChooseNumberDialogFragment extends DialogFragment {
         return root;
     }
 
-    private void initLayout(){
-        selectedNumber = getArguments().getInt(TAG_SELECTED_NUMBER,0);
+    private void initLayout() {
+        selectedNumber = getArguments().getInt(TAG_SELECTED_NUMBER, 0);
         initializeSpinner();
         binding.spinner.setSelection(selectedNumber - 1);
         newBoardCreating = getArguments().getBoolean(TAG_NEW_BOARD, false);
@@ -101,14 +101,14 @@ public class ChooseNumberDialogFragment extends DialogFragment {
     }
 
     public void chooseNumberButtonClicked() {
-        if(mCallback != null){
+        if (mCallback != null) {
             mCallback.chooseNumber(selectedNumber, checkBoxChecked);
         }
         dismiss();
     }
 
     public void onRemovePieceButtonClicked() {
-        if(mCallback != null){
+        if (mCallback != null) {
             mCallback.removePiece();
         }
         dismiss();
@@ -116,6 +116,7 @@ public class ChooseNumberDialogFragment extends DialogFragment {
 
     interface Callback {
         void chooseNumber(int selectedNumber, boolean isUnsure);
+
         void removePiece();
     }
 }
