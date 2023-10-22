@@ -121,20 +121,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
                 }, 500);
                 break;
             }
-            /*
-            case R.id.nav_menu_top_players: {
-                new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    onClickTopPlayer();
-                }, 500);
-                break;
-            }
-
-            case R.id.nav_menu_settings: {
-                new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    openSetting();
-                }, 500);
-                break;
-            }*/
         }
         // Close navigation drawer
         binding.drawerLayout.closeDrawer(GravityCompat.START);
@@ -230,13 +216,4 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
         Intent Game5 = new Intent(this, SudokuGameActivity.class);
         startActivityWithAnimation(Game5);
     }
-/*
-    public void onClickTopPlayer() {
-        Intent top = new Intent(this, TopPlayerActivity.class);
-        startActivityWithAnimation(top);
-    }
-
-    public void openSetting() {
-        startActivityWithAnimation(new Intent(this, SettingActivity.class));
-    }*/
 }

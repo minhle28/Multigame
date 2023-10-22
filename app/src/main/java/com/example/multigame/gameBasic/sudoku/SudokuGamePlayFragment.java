@@ -3,6 +3,8 @@ package com.example.multigame.gameBasic.sudoku;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import com.example.multigame.R;
+
 
 public class SudokuGamePlayFragment extends AppCompatActivity {
 

@@ -8,6 +8,8 @@ import com.example.multigame.R;
 import com.example.multigame.base.BaseFragment;
 import com.example.multigame.databinding.SudokuGameDifficultyFragmentBinding;
 
+import static androidx.navigation.fragment.NavHostFragment.findNavController;
+
 public class SudokuGameDifficultyFragment extends BaseFragment<SudokuGameDifficultyFragmentBinding> {
 
     private boolean newBoard = false;
@@ -56,14 +58,18 @@ public class SudokuGameDifficultyFragment extends BaseFragment<SudokuGameDifficu
     }
 
     public void onStartGameButtonClicked(View view) {
-
+        if (newBoard) {
+            // Do nothing
+        } else {
+            Bundle bundle = new Bundle();
+            bundle.putInt("difficulty", selectedDifficulty);
+            findNavController(this).navigate(R.id.action_sudokuGameDifficultyFragment_to_sudokuGamePlayFragment,bundle);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        try {
-            ((SudokuGameActivity)getActivity()).showMenuRight(false);
-        } catch (Exception e){}
+
     }
 }
