@@ -56,12 +56,8 @@ public class SudokuGameActivity extends BaseActivity<ActivitySudokuGameBinding> 
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menuList = menu;
         getMenuInflater().inflate(R.menu.menu_app, menu);
-        menuList.findItem(R.id.menu_information).setVisible(false);
+        menuList.findItem(R.id.menu_information).setVisible(true);
         return isHaveRightMenu();
-    }
-
-    public void showMenuRight(boolean isShow){
-        menuList.findItem(R.id.menu_information).setVisible(isShow);
     }
 
     @Override
