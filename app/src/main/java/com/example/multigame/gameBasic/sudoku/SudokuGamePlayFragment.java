@@ -29,6 +29,7 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
     private int clickedCellId;
     private Board startBoard;
     private Board currentBoard;
+    int selectedDifficulty;
 
     // Variable to save point for game
     long mStartTime = 0;
@@ -51,7 +52,7 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
     @Override
     protected void subscribeUi() {
         binding.setAction(this);
-        int selectedDifficulty = getArguments().getInt("difficulty", 0);
+        selectedDifficulty = getArguments().getInt("difficulty", 0);
 
         ArrayList<Board> boards = readGameBoards(selectedDifficulty);
         startBoard = chooseRandomBoard(boards);
@@ -234,8 +235,11 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
         if (checkAllGroups() && currentBoard.isBoardCorrect()) {
             Toast.makeText(getContext(), getString(R.string.board_correct), Toast.LENGTH_SHORT).show();
             long time = Utils.millisecondToSecond(System.currentTimeMillis() - mStartTime);
+            Utils.showAlertDialog(requireContext(), getString(R.string.game2_name), getString(R.string.alert_correct_sudoku, time));
+            binding.buttonCheckBoard.setVisibility(View.INVISIBLE);
         } else {
             Toast.makeText(getContext(), getString(R.string.board_incorrect), Toast.LENGTH_SHORT).show();
+            Utils.showAlertDialog(requireContext(), getString(R.string.game2_name), getString(R.string.alert_incorrect_sudoku));
         }
     }
 

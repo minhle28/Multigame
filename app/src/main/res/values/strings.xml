@@ -60,9 +60,6 @@
         4. The timer will record how fast the player has been played.
     </string>
 
-    <!-- Alert -->
-    <string name="alert_win">You win!\nTime to win this game is %d seconds.</string>
-
     <!-- Sudoku Game -->
     <string name="sudoku_game_title">Sudoku game</string>
     <string name="sudoku_game_select_difficulty">Select Your Difficulty</string>
@@ -72,7 +69,7 @@
     <string name="sudoku_game_start_game">Start Game</string>
     <string name="sudoku_game_check_board">Check board</string>
     <string name="board_correct">Board is CORRECT</string>
-    <string name="board_incorrect">Board is INCORRECT, Please Try again.</string>
+    <string name="board_incorrect">Board is INCORRECT</string>
     <string name="start_piece_error">Can not change start piece</string>
     <string name="choose_a_number">Choose number to place:</string>
     <string name="choose_number">Choose number</string>
@@ -84,4 +81,9 @@
         2. The board is separated into several squares, and inside each of them it is only allowed to place one of each number.\n\n
         3. It is only allowed to place one of each number at each row, both horizontal and vertical.
     </string>
+
+    <!-- Alert -->
+    <string name="alert_win">You win!\nTime to win this game is %d seconds.</string>
+    <string name="alert_correct_sudoku">Correct!\nTime to solve the puzzle is %d seconds.</string>
+    <string name="alert_incorrect_sudoku">Incorrect! Please try again.</string>
 </resources>

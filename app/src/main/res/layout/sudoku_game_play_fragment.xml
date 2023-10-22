@@ -34,7 +34,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="0" />
+                    android:tag="0"
+                    tools:layout="@layout/fragment_cell_group" />
 
                 <fragment
                     android:id="@+id/cellGroupFragment2"
@@ -42,7 +43,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="1" />
+                    android:tag="1"
+                    tools:layout="@layout/fragment_cell_group" />
 
                 <fragment
                     android:id="@+id/cellGroupFragment3"
@@ -50,7 +52,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="2" />
+                    android:tag="2"
+                    tools:layout="@layout/fragment_cell_group" />
 
             </TableRow>
 
@@ -64,7 +67,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="3" />
+                    android:tag="3"
+                    tools:layout="@layout/fragment_cell_group" />
 
                 <fragment
                     android:id="@+id/cellGroupFragment5"
@@ -72,7 +76,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="4" />
+                    android:tag="4"
+                    tools:layout="@layout/fragment_cell_group" />
 
                 <fragment
                     android:id="@+id/cellGroupFragment6"
@@ -80,7 +85,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="5" />
+                    android:tag="5"
+                    tools:layout="@layout/fragment_cell_group" />
             </TableRow>
 
             <TableRow
@@ -93,7 +99,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="6" />
+                    android:tag="6"
+                    tools:layout="@layout/fragment_cell_group" />
 
                 <fragment
                     android:id="@+id/cellGroupFragment8"
@@ -101,7 +108,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="7" />
+                    android:tag="7"
+                    tools:layout="@layout/fragment_cell_group" />
 
                 <fragment
                     android:id="@+id/cellGroupFragment9"
@@ -109,7 +117,8 @@
                     android:layout_width="92dp"
                     android:layout_height="106dp"
                     android:layout_weight="1"
-                    android:tag="8" />
+                    android:tag="8"
+                    tools:layout="@layout/fragment_cell_group" />
             </TableRow>
         </TableLayout>
 
