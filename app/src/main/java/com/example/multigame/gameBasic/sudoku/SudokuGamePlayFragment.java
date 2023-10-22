@@ -2,19 +2,16 @@ package com.example.multigame.gameBasic.sudoku;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.Random;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.Random;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
+
 
 import com.example.multigame.R;
 import com.example.multigame.base.BaseFragment;
@@ -96,8 +93,8 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
     }
 
     private ArrayList<Board> readGameBoards(int difficulty) {
-        int minNumbers = 30; // Minimum number of initial numbers
-        int maxNumbers = 50; // Maximum number of initial numbers
+        int minNumbers = 30;
+        int maxNumbers = 50;
 
         if (difficulty == 0) {
             maxNumbers = 50;    //Easy
@@ -120,28 +117,28 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
 
     private Board generateRandomBoard(int minNumbers, int maxNumbers) {
         Random random = new Random();
-        boolean solved = false;
-        Board board = new Board();
+        Board solvedBoard = new Board();
+        solveSudoku(solvedBoard, 0, 0); // Generate a solved Sudoku puzzle
 
-        while (!solved) {
-            board = new Board();
-            solved = solveSudoku(board, 0, 0);
-        }
+        // Copy the solved board to ensure it remains unchanged
+        Board randomBoard = new Board();
+        randomBoard.copyValues(solvedBoard.getGameCells());
 
         // Randomly remove numbers from the solved board to get the desired number of initial numbers
+        //int remainingNumbers = 81 - (random.nextInt(maxNumbers - minNumbers + 1) + minNumbers);
         int remainingNumbers = 81 - maxNumbers;
 
         while (remainingNumbers > 0) {
             int row = random.nextInt(9);
             int col = random.nextInt(9);
 
-            if (board.getValue(row, col) != 0) {
-                board.setValue(row, col, 0);
+            if (randomBoard.getValue(row, col) != 0) {
+                randomBoard.setValue(row, col, 0);
                 remainingNumbers--;
             }
         }
 
-        return board;
+        return randomBoard;
     }
 
     private boolean solveSudoku(Board board, int row, int col) {
@@ -156,7 +153,10 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
             return solveSudoku(board, row + 1, col);
         }
 
-        for (int num = 1; num <= 9; num++) {
+        List<Integer> randomNumbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        Collections.shuffle(randomNumbers);
+
+        for (int num : randomNumbers) {
             if (isValidNumber(board, row, col, num)) {
                 board.setValue(row, col, num);
                 if (solveSudoku(board, row + 1, col)) {
@@ -168,6 +168,7 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
 
         return false; // No valid number can be placed
     }
+
 
     private boolean isValidNumber(Board board, int row, int col, int num) {
         return !isInRow(board, row, num) && !isInCol(board, col, num) && !isInBox(board, row - row % 3, col - col % 3, num);
@@ -200,16 +201,6 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
             }
         }
         return false;
-    }
-
-
-    // Helper functions to map Sudoku board indices to UI fragment IDs
-    private int getCellGroupId(int row, int column) {
-        return (row / 3) * 3 + (column / 3) + 1;
-    }
-
-    private int getCellIdInGroup(int row, int column) {
-        return (row % 3) * 3 + (column % 3);
     }
 
     private boolean isStartPiece(int group, int cell) {
@@ -246,11 +237,6 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
         } else {
             Toast.makeText(getContext(), getString(R.string.board_incorrect), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public void onShowInstructionsButtonClicked() {
-        DialogInstruction dialogInstruction = DialogInstruction.newInstance(R.layout.dialog_instruction_sudoku);
-        dialogInstruction.show(getChildFragmentManager(), "instruction");
     }
 
     public void onFragmentInteraction(int groupId, int cellId, View view) {
