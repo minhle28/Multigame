@@ -70,6 +70,5 @@ public class SudokuGameDifficultyFragment extends BaseFragment<SudokuGameDifficu
     @Override
     public void onResume() {
         super.onResume();
-
     }
 }

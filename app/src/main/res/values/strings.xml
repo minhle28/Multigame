@@ -65,6 +65,7 @@
 
     <!-- Sudoku Game -->
     <string name="sudoku_game_title">Sudoku game</string>
+    <string name="sudoku_game_select_difficulty">Select Your Difficulty</string>
     <string name="sudoku_game_difficulty_easy">Easy</string>
     <string name="sudoku_game_difficulty_normal">Normal</string>
     <string name="sudoku_game_difficulty_hard">Hard</string>
