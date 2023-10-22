@@ -54,112 +54,152 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
     @Override
     protected void subscribeUi() {
         binding.setAction(this);
-        int difficulty = getArguments().getInt("difficulty", 0);
+        int selectedDifficulty = getArguments().getInt("difficulty", 0);
 
-        // Generate a random Sudoku board based on the difficulty level
-        currentBoard = generateRandomSudoku(difficulty);
+        ArrayList<Board> boards = readGameBoards(selectedDifficulty);
+        startBoard = chooseRandomBoard(boards);
+        currentBoard = new Board();
+        currentBoard.copyValues(startBoard.getGameCells());
 
-        // Populate the Sudoku board with values
-        populateSudokuBoard();
-    }
-
-    private Board generateRandomSudoku(int difficulty) {
-        // Create a new Sudoku board
-        Board sudokuBoard = new Board();
-        Random random = new Random();
-
-        // Determine the number of empty cells based on the difficulty level
-        int emptyCells = 0;
-        switch (difficulty) {
-            case 0: // Easy
-                emptyCells = 1;
-                break;
-            case 1: // Normal
-                emptyCells = 2;
-                break;
-            case 2: // Hard
-                emptyCells = 3;
-                break;
+        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2, R.id.cellGroupFragment3, R.id.cellGroupFragment4,
+                R.id.cellGroupFragment5, R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
+        for (int i = 1; i < 10; i++) {
+            CellGroupFragment thisCellGroupFragment = (CellGroupFragment) getChildFragmentManager().findFragmentById(cellGroupFragments[i - 1]);
+            thisCellGroupFragment.setGroupId(i);
         }
 
-        // Fill the Sudoku board with random numbers while keeping it a valid Sudoku puzzle
-        while (emptyCells > 0) {
-            int row = random.nextInt(9);
-            int column = random.nextInt(9);
-            int value = random.nextInt(9) + 1;
-
-            // Check if the randomly chosen cell is empty
-            if (sudokuBoard.getValue(row, column) == 0) {
-                // Check if the value is valid for this cell
-                if (isValidValue(sudokuBoard, row, column, value)) {
-                    sudokuBoard.setValue(row, column, value);
-                    emptyCells--;
-                }
-            }
-        }
-
-        return sudokuBoard;
-    }
-
-    private boolean isValidValue(Board board, int row, int column, int value) {
-        // Check if the value is valid in the row, column, and 3x3 box
-        return isValidRow(board, row, value) && isValidColumn(board, column, value) && isValidBox(board, row, column, value);
-    }
-
-    private boolean isValidRow(Board board, int row, int value) {
-        for (int col = 0; col < 9; col++) {
-            if (board.getValue(row, col) == value) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isValidColumn(Board board, int column, int value) {
-        for (int row = 0; row < 9; row++) {
-            if (board.getValue(row, column) == value) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isValidBox(Board board, int row, int column, int value) {
-        int boxRow = (row / 3) * 3;
-        int boxCol = (column / 3) * 3;
-
-        for (int r = boxRow; r < boxRow + 3; r++) {
-            for (int c = boxCol; c < boxCol + 3; c++) {
-                if (board.getValue(r, c) == value) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    private void populateSudokuBoard() {
+        // Appear all values from the current board
+        CellGroupFragment tempCellGroupFragment;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                int cellGroupId = getCellGroupId(i, j);
-                int cellId = getCellIdInGroup(i, j);
+                int column = j / 3;
+                int row = i / 3;
 
-                // Find the CellGroupFragment by tag
-                String tag = String.valueOf(cellGroupId);
-                CellGroupFragment cellGroupFragment = (CellGroupFragment) getChildFragmentManager().findFragmentByTag(tag);
+                int fragmentNumber = (row * 3) + column;
+                tempCellGroupFragment = (CellGroupFragment) getChildFragmentManager().findFragmentById(cellGroupFragments[fragmentNumber]);
+                int groupColumn = j % 3;
+                int groupRow = i % 3;
 
-                if (cellGroupFragment != null) {
-                    int cellValue = currentBoard.getValue(i, j);
+                int groupPosition = (groupRow * 3) + groupColumn;
+                int currentValue = currentBoard.getValue(i, j);
 
-                    if (cellValue != 0) {
-                        cellGroupFragment.setValue(cellId, cellValue);
-                    }
-                } else {
-                    // Handle the case where the fragment is null
-                    Log.e(TAG, "CellGroupFragment is null for tag: " + tag);
+                if (currentValue != 0) {
+                    tempCellGroupFragment.setValue(groupPosition, currentValue);
                 }
             }
         }
+    }
+
+    private Board chooseRandomBoard(ArrayList<Board> boards) {
+        int randomNumber = (int) (Math.random() * boards.size());
+        return boards.get(randomNumber);
+    }
+
+    private ArrayList<Board> readGameBoards(int difficulty) {
+        int minNumbers = 30; // Minimum number of initial numbers
+        int maxNumbers = 50; // Maximum number of initial numbers
+
+        if (difficulty == 0) {
+            maxNumbers = 50;    //Easy
+        } else if (difficulty == 1) {
+            maxNumbers = 40;    //Normal
+        } else if (difficulty == 2) {
+            maxNumbers = 30;    //Hard
+        }
+
+        ArrayList<Board> boards = new ArrayList<>();
+
+        // Generate random Sudoku boards with initial numbers
+        for (int i = 0; i < 10; i++) {
+            Board board = generateRandomBoard(minNumbers, maxNumbers);
+            boards.add(board);
+        }
+
+        return boards;
+    }
+
+    private Board generateRandomBoard(int minNumbers, int maxNumbers) {
+        Random random = new Random();
+        boolean solved = false;
+        Board board = new Board();
+
+        while (!solved) {
+            board = new Board();
+            solved = solveSudoku(board, 0, 0);
+        }
+
+        // Randomly remove numbers from the solved board to get the desired number of initial numbers
+        int remainingNumbers = 81 - maxNumbers;
+
+        while (remainingNumbers > 0) {
+            int row = random.nextInt(9);
+            int col = random.nextInt(9);
+
+            if (board.getValue(row, col) != 0) {
+                board.setValue(row, col, 0);
+                remainingNumbers--;
+            }
+        }
+
+        return board;
+    }
+
+    private boolean solveSudoku(Board board, int row, int col) {
+        if (row == 9) {
+            row = 0;
+            if (++col == 9) {
+                return true; // Entire board has been successfully filled
+            }
+        }
+
+        if (board.getValue(row, col) != 0) {
+            return solveSudoku(board, row + 1, col);
+        }
+
+        for (int num = 1; num <= 9; num++) {
+            if (isValidNumber(board, row, col, num)) {
+                board.setValue(row, col, num);
+                if (solveSudoku(board, row + 1, col)) {
+                    return true;
+                }
+                board.setValue(row, col, 0); // Backtrack
+            }
+        }
+
+        return false; // No valid number can be placed
+    }
+
+    private boolean isValidNumber(Board board, int row, int col, int num) {
+        return !isInRow(board, row, num) && !isInCol(board, col, num) && !isInBox(board, row - row % 3, col - col % 3, num);
+    }
+
+    private boolean isInRow(Board board, int row, int num) {
+        for (int i = 0; i < 9; i++) {
+            if (board.getValue(row, i) == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isInCol(Board board, int col, int num) {
+        for (int i = 0; i < 9; i++) {
+            if (board.getValue(i, col) == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isInBox(Board board, int boxStartRow, int boxStartCol, int num) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board.getValue(boxStartRow + i, boxStartCol + j) == num) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 
@@ -174,9 +214,17 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
 
     private boolean isStartPiece(int group, int cell) {
         int row = ((group - 1) / 3) * 3 + (cell / 3);
-        int column = ((group - 1) % 3) * 3 + ((cell) % 3);
-        return startBoard.getValue(row, column) != 0;
+        int column = ((group - 1) % 3) * 3 + (cell % 3);
+
+        // Check if row and column are valid indices
+        if (row >= 0 && row < 9 && column >= 0 && column < 9) {
+            return startBoard.getValue(row, column) != 0;
+        } else {
+            // Handle the case where row or column is out of bounds
+            return false;
+        }
     }
+
 
     private boolean checkAllGroups() {
         int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2, R.id.cellGroupFragment3, R.id.cellGroupFragment4,
@@ -205,6 +253,53 @@ public class SudokuGamePlayFragment extends BaseFragment<SudokuGamePlayFragmentB
         dialogInstruction.show(getChildFragmentManager(), "instruction");
     }
 
+    public void onFragmentInteraction(int groupId, int cellId, View view) {
+
+        if (mStartTime == 0) {
+            mStartTime = System.currentTimeMillis();
+        }
+
+        clickedCell = (TextView) view;
+        clickedGroup = groupId;
+        clickedCellId = cellId;
+
+        int row = ((clickedGroup - 1) / 3) * 3 + (clickedCellId / 3);
+        int column = ((clickedGroup - 1) % 3) * 3 + ((clickedCellId) % 3);
+
+        if (!isStartPiece(groupId, cellId)) {
+            int number = TextUtils.isEmpty(clickedCell.getText().toString()) ? 1 : Integer.parseInt(clickedCell.getText().toString());
+            ChooseNumberDialogFragment chooseNumber = ChooseNumberDialogFragment.newInstance(number, false);
+            chooseNumber.setCallback(new ChooseNumberDialogFragment.Callback() {
+                @Override
+                public void chooseNumber(int number, boolean isUnsure) {
+                    clickedCell.setText(String.valueOf(number));
+                    currentBoard.setValue(row, column, number);
+                    if (isUnsure) {
+                        clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell_unsure));
+                    } else {
+                        clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell));
+                    }
+
+                    if (currentBoard.isBoardFull()) {
+                        binding.buttonCheckBoard.setVisibility(View.VISIBLE);
+                    } else {
+                        binding.buttonCheckBoard.setVisibility(View.INVISIBLE);
+                    }
+                }
+
+                @Override
+                public void removePiece() {
+                    clickedCell.setText("");
+                    clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell));
+                    currentBoard.setValue(row, column, 0);
+                    binding.buttonCheckBoard.setVisibility(View.INVISIBLE);
+                }
+            });
+            chooseNumber.show(getChildFragmentManager(), "chooseNumber");
+        } else {
+            Toast.makeText(getContext(), getString(R.string.start_piece_error), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onResume() {
