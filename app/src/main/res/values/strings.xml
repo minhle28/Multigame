@@ -14,7 +14,7 @@
     <string name="game1_name">Tictactoe</string>
     <string name="game2_name">Sudoku</string>
     <string name="game3_name">Memory</string>
-    <string name="game4_name">Game 4</string>
+    <string name="game4_name">Trivia</string>
     <string name="game5_name">Game 5</string>
     <string name="menu_top_players">Top players</string>
     <string name="menu_setting">Setting</string>

@@ -45,7 +45,7 @@ public class TriviaGameActivity extends BaseActivity<ActivityTriviaGameBinding> 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menuList = menu;
-        getMenuInflater().inflate(R.menu.menu_app, menu);
+        getMenuInflater().inflate(R.menu.menu_tictactoe_game, menu);
         if (play_music) {
             menu.findItem(R.id.action_sound).setIcon(R.drawable.ic_volume_off_white_24dp);
         } else {

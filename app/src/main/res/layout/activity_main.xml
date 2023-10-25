@@ -141,7 +141,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/game_pic" />
+                            android:src="@drawable/trivia" />
 
                         <TextView
                             android:layout_width="wrap_content"

@@ -22,6 +22,7 @@
         <item
             android:id="@+id/nav_menu_game4"
             android:checkable="false"
+            android:icon="@drawable/icon_trivia"
             android:title="@string/game4_name" />
         <item
             android:id="@+id/nav_menu_game5"
