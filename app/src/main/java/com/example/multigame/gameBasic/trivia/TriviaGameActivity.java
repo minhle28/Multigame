@@ -14,7 +14,6 @@ import com.example.multigame.R;
 import com.example.multigame.base.BaseActivity;
 import com.example.multigame.base.DialogInstruction;
 import com.example.multigame.databinding.ActivityTriviaGameBinding;
-import com.example.multigame.gameBasic.memory.MemoryGameMenu;
 
 public class TriviaGameActivity extends BaseActivity<ActivityTriviaGameBinding> {
 
@@ -39,7 +38,7 @@ public class TriviaGameActivity extends BaseActivity<ActivityTriviaGameBinding> 
 
     @Override
     protected String getActionBarTitle() {
-        return getString(R.string.title_activity_memory_game);
+        return getString(R.string.title_activity_trivia_game);
     }
 
     @Override
@@ -58,7 +57,7 @@ public class TriviaGameActivity extends BaseActivity<ActivityTriviaGameBinding> 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_information:
-                DialogInstruction dialogInstruction = DialogInstruction.newInstance(R.layout.dialog_instruction_memory);
+                DialogInstruction dialogInstruction = DialogInstruction.newInstance(R.layout.dialog_instruction_trivia);
                 dialogInstruction.show(getSupportFragmentManager(), "instruction");
                 return true;
             case R.id.action_sound:
@@ -113,7 +112,7 @@ public class TriviaGameActivity extends BaseActivity<ActivityTriviaGameBinding> 
         if (isHaveBackMenu()) {
             NavDestination currentDestination = Navigation.findNavController(this, R.id.nav_host_fragment).getCurrentDestination();
             String className = ((FragmentNavigator.Destination) currentDestination).getClassName();
-            if (className.equals(MemoryGameMenu.class.getName())) {
+            if (className.equals(TriviaGameMenu.class.getName())) {
                 finish();
                 overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_right_exit);
             } else {

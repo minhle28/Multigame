@@ -87,6 +87,12 @@
     <string name="trivia_game_new_game">New game</string>
     <string name="trivia_game_welcome_text">Welcome to Trivia Game!</string>
     <string name="trivia_game_play">Play Quiz</string>
+    <!-- Right Menu -->
+    <string name="instructions_game_trivia">
+        1. Choose the categories.\n\n
+        2. Each categories have 10 questions.\n\n
+        3. You need to answer them in 10 mimutes.
+    </string>
 
     <!-- Alert -->
     <string name="alert_win">You win!\nTime to win this game is %d seconds.</string>
