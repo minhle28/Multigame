@@ -82,6 +82,12 @@
         3. It is only allowed to place one of each number at each row, both horizontal and vertical.
     </string>
 
+    <!-- Trivia Game -->
+    <string name="title_activity_trivia_game">Trivia Game</string>
+    <string name="trivia_game_new_game">New game</string>
+    <string name="trivia_game_welcome_text">Welcome to Trivia Game!</string>
+    <string name="trivia_game_play">Play Quiz</string>
+
     <!-- Alert -->
     <string name="alert_win">You win!\nTime to win this game is %d seconds.</string>
     <string name="alert_correct_sudoku">Correct!\nTime to solve the puzzle is %d seconds.</string>

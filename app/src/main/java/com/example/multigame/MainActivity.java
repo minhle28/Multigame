@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat;
 
 import com.example.multigame.databinding.NavHeaderMainBinding;
 import com.example.multigame.gameBasic.memory.MemoryGameActivity;
+import com.example.multigame.gameBasic.trivia.TriviaGameActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.example.multigame.base.BaseActivity;
 import com.example.multigame.databinding.ActivityMainBinding;
@@ -66,7 +67,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //setupNavigationView();
-
     }
 
     private void setupNavigationView() {
@@ -208,8 +208,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
     }
 
     public void onClickGame4() {
-        Intent Game4 = new Intent(this, SudokuGameActivity.class);
-        startActivityWithAnimation(Game4);
+        Intent triviaGame = new Intent(this, TriviaGameActivity.class);
+        startActivityWithAnimation(triviaGame);
     }
 
     public void onClickGame5() {

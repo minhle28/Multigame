@@ -11,9 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Multigame"
         tools:targetApi="31">
-        <activity
-            android:name=".TriviaGameActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -27,6 +25,7 @@
         <activity android:name="com.example.multigame.gameBasic.tictactoe.TictactoeGameActivity" />
         <activity android:name="com.example.multigame.gameBasic.sudoku.SudokuGameActivity" />
         <activity android:name="com.example.multigame.gameBasic.memory.MemoryGameActivity" />
+        <activity android:name="com.example.multigame.gameBasic.trivia.TriviaGameActivity" />
 
         <service
             android:name="com.example.multigame.service.BackgroundSoundService"
