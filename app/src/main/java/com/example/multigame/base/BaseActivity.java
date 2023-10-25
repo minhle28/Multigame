@@ -40,7 +40,6 @@ public abstract class BaseActivity<BD extends ViewDataBinding> extends AppCompat
         binding = DataBindingUtil.setContentView(this, getLayoutID());
         setTitle(getActionBarTitle());
         centerTitle();
-        subscribeUi();
         if(isHaveBackMenu()){
             showMenuBack();
         }

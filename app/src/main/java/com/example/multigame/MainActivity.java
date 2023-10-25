@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements N
         centerTitle();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setupNavigationView();
+        //setupNavigationView();
 
     }
 
