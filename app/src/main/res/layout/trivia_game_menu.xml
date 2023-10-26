@@ -17,41 +17,27 @@
 
         <ImageView
             android:id="@+id/imageGameLogo"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:src="@drawable/trivia"
+            android:layout_width="280dp"
+            android:layout_height="200dp"
+            android:src="@drawable/trivia_menu_logo"
             app:layout_constraintBottom_toTopOf="@+id/buttonStartNewGame"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.382" />
-
-        <TextView
-            android:id="@+id/textGameTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:text="@string/trivia_game_welcome_text"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageGameLogo" />
+            app:layout_constraintVertical_bias="0.828" />
 
         <Button
             android:id="@+id/buttonStartNewGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="220dp"
             android:backgroundTint="@color/purple_500"
             android:onClick="@{() -> action.onPlayGameButtonClicked()}"
             android:text="@string/trivia_game_play"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textGameTitle"
-            app:layout_constraintVertical_bias="0.411" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

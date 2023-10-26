@@ -83,10 +83,16 @@
     </string>
 
     <!-- Trivia Game -->
+    <string name="trivia_game_title">Trivia</string>
     <string name="title_activity_trivia_game">Trivia Game</string>
     <string name="trivia_game_new_game">New game</string>
     <string name="trivia_game_welcome_text">Welcome to Trivia Game!</string>
-    <string name="trivia_game_play">Play Quiz</string>
+    <string name="trivia_game_play">Let\'s Get Start</string>
+    <string name="trivia_select_category">Select Your Category</string>
+    <string name="trivia_category_one">category 1</string>
+    <string name="trivia_category_two">category 2</string>
+    <string name="trivia_category_three">category 3</string>
+    <string name="trivia_category_four">category 4</string>
     <!-- Right Menu -->
     <string name="instructions_game_trivia">
         1. Choose the categories.\n\n

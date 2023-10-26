@@ -17,7 +17,7 @@ public class TriviaGameMenu extends BaseFragment<TriviaGameMenuBinding> {
 
     @Override
     protected String getActionBarTitle() {
-        return getString(R.string.title_activity_trivia_game);
+        return getString(R.string.trivia_game_title);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class TriviaGameMenu extends BaseFragment<TriviaGameMenuBinding> {
     }
 
     public void onPlayGameButtonClicked() {
-        findNavController(this).navigate(R.id.action_memoryGameMenu_to_memoryGameFragment);
+        findNavController(this).navigate(R.id.action_triviaGameMenu_to_triviaCategoriesFragment);
     }
 
     @Override

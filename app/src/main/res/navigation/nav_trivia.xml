@@ -20,6 +20,20 @@
     </fragment>
     <fragment
         android:id="@+id/triviaCategoriesFragment"
+        android:name="com.example.multigame.gameBasic.trivia.TriviaCategoriesFragment"
+        android:label="TriviaCategoriesFragment">
+        <action
+            android:id="@+id/action_triviaCategoriesFragment_to_triviaGameFragment"
+            app:destination="@id/triviaGameFragment"
+            app:enterAnim="@anim/slide_right_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_left_enter"
+            app:popExitAnim="@anim/slide_right_exit"
+            app:popUpTo="@id/triviaGameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/triviaGameFragment"
         android:name="com.example.multigame.gameBasic.memory.MemoryGameFragment"
         android:label="MemoryGameFragment"></fragment>
 

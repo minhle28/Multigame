@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="action"
+            type="com.example.multigame.gameBasic.trivia.TriviaCategoriesFragment" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".gameBasic.trivia.TriviaCategoriesFragment">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/trivia_select_category"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <GridLayout
+            android:id="@+id/categoryGridLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            app:layout_constraintBottom_toTopOf="@+id/startButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleText"
+            app:layout_constraintVertical_bias="0.0">
+
+            <RadioButton
+                android:id="@+id/category1RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:background="@drawable/bg_radio_button"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/game_pic"
+                android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
+                android:text="@string/trivia_category_one"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/category2RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:background="@drawable/bg_radio_button"
+                android:button="@null"
+                android:drawableTop="@drawable/game_pic"
+                android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
+                android:text="@string/trivia_category_two"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/category3RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:background="@drawable/bg_radio_button"
+                android:button="@null"
+                android:drawableTop="@drawable/game_pic"
+                android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
+                android:text="@string/trivia_category_three"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/category4RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:background="@drawable/bg_radio_button"
+                android:button="@null"
+                android:drawableTop="@drawable/game_pic"
+                android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
+                android:text="@string/trivia_category_four"
+                android:textAlignment="center" />
+        </GridLayout>
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:text="Start Game"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
