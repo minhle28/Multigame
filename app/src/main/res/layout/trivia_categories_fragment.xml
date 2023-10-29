@@ -24,73 +24,78 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <GridLayout
-            android:id="@+id/categoryGridLayout"
+        <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:columnCount="2"
-            android:rowCount="2"
-            app:layout_constraintBottom_toTopOf="@+id/startButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/titleText"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <RadioButton
-                android:id="@+id/category1RadioButton"
-                android:layout_width="0dp"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="25dp"
-                android:background="@drawable/bg_radio_button"
-                android:button="@null"
-                android:checked="true"
-                android:drawableTop="@drawable/game_pic"
-                android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
-                android:text="@string/trivia_category_one"
-                android:textAlignment="center" />
+                android:gravity="center">
+                <RadioButton
+                    android:id="@+id/category1RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="25dp"
+                    android:background="@drawable/bg_radio_button"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableTop="@drawable/game_pic"
+                    android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
+                    android:text="@string/trivia_category_one"
+                    android:textAlignment="center"/>
 
-            <RadioButton
-                android:id="@+id/category2RadioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="25dp"
-                android:background="@drawable/bg_radio_button"
-                android:button="@null"
-                android:drawableTop="@drawable/game_pic"
-                android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
-                android:text="@string/trivia_category_two"
-                android:textAlignment="center" />
+                <RadioButton
+                    android:id="@+id/category2RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="25dp"
+                    android:background="@drawable/bg_radio_button"
+                    android:button="@null"
+                    android:drawableTop="@drawable/game_pic"
+                    android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
+                    android:text="@string/trivia_category_two"
+                    android:textAlignment="center" />
+            </TableRow>
 
-            <RadioButton
-                android:id="@+id/category3RadioButton"
-                android:layout_width="0dp"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="25dp"
-                android:background="@drawable/bg_radio_button"
-                android:button="@null"
-                android:drawableTop="@drawable/game_pic"
-                android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
-                android:text="@string/trivia_category_three"
-                android:textAlignment="center" />
+                android:gravity="center">
+                <RadioButton
+                    android:id="@+id/category3RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="25dp"
+                    android:background="@drawable/bg_radio_button"
+                    android:button="@null"
+                    android:drawableTop="@drawable/game_pic"
+                    android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
+                    android:text="@string/trivia_category_three"
+                    android:textAlignment="center" />
 
-            <RadioButton
-                android:id="@+id/category4RadioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="25dp"
-                android:background="@drawable/bg_radio_button"
-                android:button="@null"
-                android:drawableTop="@drawable/game_pic"
-                android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
-                android:text="@string/trivia_category_four"
-                android:textAlignment="center" />
-        </GridLayout>
+                <RadioButton
+                    android:id="@+id/category4RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="25dp"
+                    android:background="@drawable/bg_radio_button"
+                    android:button="@null"
+                    android:drawableTop="@drawable/game_pic"
+                    android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
+                    android:text="@string/trivia_category_four"
+                    android:textAlignment="center" />
+            </TableRow>
+        </RadioGroup>
 
         <Button
             android:id="@+id/startButton"
