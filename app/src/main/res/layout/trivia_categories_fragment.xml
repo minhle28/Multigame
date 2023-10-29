@@ -45,9 +45,7 @@
                     android:layout_margin="25dp"
                     android:background="@drawable/bg_radio_button"
                     android:button="@null"
-                    android:checked="true"
                     android:drawableTop="@drawable/game_pic"
-                    android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
                     android:text="@string/trivia_category_one"
                     android:textAlignment="center"/>
 
@@ -60,7 +58,6 @@
                     android:background="@drawable/bg_radio_button"
                     android:button="@null"
                     android:drawableTop="@drawable/game_pic"
-                    android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
                     android:text="@string/trivia_category_two"
                     android:textAlignment="center" />
             </TableRow>
@@ -78,7 +75,6 @@
                     android:background="@drawable/bg_radio_button"
                     android:button="@null"
                     android:drawableTop="@drawable/game_pic"
-                    android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
                     android:text="@string/trivia_category_three"
                     android:textAlignment="center" />
 
@@ -91,7 +87,6 @@
                     android:background="@drawable/bg_radio_button"
                     android:button="@null"
                     android:drawableTop="@drawable/game_pic"
-                    android:onClick="@{(view) -> action.onCategoryRadioButtonsClicked(view)}"
                     android:text="@string/trivia_category_four"
                     android:textAlignment="center" />
             </TableRow>

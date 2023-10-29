@@ -11,7 +11,7 @@ import com.example.multigame.databinding.TriviaCategoriesFragmentBinding;
 import static androidx.navigation.fragment.NavHostFragment.findNavController;
 
 public class TriviaCategoriesFragment extends BaseFragment<TriviaCategoriesFragmentBinding> {
-
+    private int selectedDifficulty = 0;
     @Override
     protected int getLayoutID() {
         return R.layout.trivia_categories_fragment;
@@ -32,30 +32,4 @@ public class TriviaCategoriesFragment extends BaseFragment<TriviaCategoriesFragm
         binding.setAction(this);
     }
 
-    public void onCategoryRadioButtonsClicked(View view) {
-
-        boolean checked = ((RadioButton) view).isChecked();
-        switch (view.getId()) {
-            case R.id.category1RadioButton:
-                if (checked) {
-                    //selectedDifficulty = 0;
-                }
-                break;
-            case R.id.category2RadioButton:
-                if (checked) {
-                    //selectedDifficulty = 1;
-                }
-                break;
-            case R.id.category3RadioButton:
-                if (checked) {
-                    //selectedDifficulty = 2;
-                }
-                break;
-            case R.id.category4RadioButton:
-                if (checked) {
-                    //selectedDifficulty = 2;
-                }
-                break;
-        }
-    }
 }
