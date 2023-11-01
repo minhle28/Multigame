@@ -26,70 +26,55 @@
 
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/titleText"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/titleText">
 
-            <TableRow
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/category1RadioButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center">
-                <RadioButton
-                    android:id="@+id/category1RadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="25dp"
-                    android:background="@drawable/bg_radio_button"
-                    android:button="@null"
-                    android:drawableTop="@drawable/game_pic"
-                    android:text="@string/trivia_category_one"
-                    android:textAlignment="center"/>
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:background="@drawable/bg_radio_button"
+                android:button="@null"
+                android:text="@string/trivia_category_one"
+                android:textAlignment="center" />
 
-                <RadioButton
-                    android:id="@+id/category2RadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="25dp"
-                    android:background="@drawable/bg_radio_button"
-                    android:button="@null"
-                    android:drawableTop="@drawable/game_pic"
-                    android:text="@string/trivia_category_two"
-                    android:textAlignment="center" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/category2RadioButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center">
-                <RadioButton
-                    android:id="@+id/category3RadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="25dp"
-                    android:background="@drawable/bg_radio_button"
-                    android:button="@null"
-                    android:drawableTop="@drawable/game_pic"
-                    android:text="@string/trivia_category_three"
-                    android:textAlignment="center" />
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:background="@drawable/bg_radio_button"
+                android:button="@null"
+                android:text="@string/trivia_category_two"
+                android:textAlignment="center" />
 
-                <RadioButton
-                    android:id="@+id/category4RadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="25dp"
-                    android:background="@drawable/bg_radio_button"
-                    android:button="@null"
-                    android:drawableTop="@drawable/game_pic"
-                    android:text="@string/trivia_category_four"
-                    android:textAlignment="center" />
-            </TableRow>
+            <RadioButton
+                android:id="@+id/category3RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:background="@drawable/bg_radio_button"
+                android:button="@null"
+                android:text="@string/trivia_category_three"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/category4RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="25dp"
+                android:background="@drawable/bg_radio_button"
+                android:button="@null"
+                android:text="@string/trivia_category_four"
+                android:textAlignment="center" />
         </RadioGroup>
 
         <Button
